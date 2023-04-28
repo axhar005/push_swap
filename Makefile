@@ -6,12 +6,16 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/04/27 22:20:14 by oboucher         ###   ########.fr        #
+#    Updated: 2023/04/27 22:42:41 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--- LIBRARY NAME ---#
 NAME = push_swap
+
+LDIR = libft/
+
+LIBFT = libft.a
 
 #--- COMMAND VARIABLES ---#
 CC = gcc
@@ -57,14 +61,10 @@ OBJ = $(addprefix ${OBJDIR}/, ${SRC:.c=.o})
 ${OBJDIR}/%.o : %.c
 	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
 	
-all				: 	 	$(NAME)
-	
-$(NAMES)		: 		$(OBJDIR) $(OBJ)
-	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAMES} ${OBJ}
-	
+all				: 	  init update libft $(NAME)
 	
 ${NAME}		:		$(OBJDIR) $(OBJ)
-	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJ}
+	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJ} $(LDIR)$(LIBFT)
 	@echo "$(NAME)${GREEN} sucessefully compiled 📁.${RESET}"
 
 $(OBJDIR)		:
@@ -73,20 +73,25 @@ $(OBJDIR)		:
 run				:		all
 	@./${NAME}
 
+libft :
+	@$(MAKE) -C $(LDIR)
+
 update:
-	git submodule update --remote --recursive
+	@git submodule update --remote --recursive
 
 init:
-	git submodule update --init --recursive
+	@git submodule update --init --recursive
 
 clean			:
 	@$(RM) $(OBJ)
 	@$(RM)r $(OBJDIR)
+	@$(MAKE) -C $(LDIR) clean
 	
 fclean			: 		clean	
 	@$(RM) $(NAME)
+	@$(MAKE) -C $(LDIR) fclean
 	@echo "$(NAME)${GREEN} object files and executable successfully removed 🗑.${RESET}"
 
 re				: 		fclean all
 
-.PHONY			: 		all clean fclean re
+.PHONY			: 		all clean fclean libft re
