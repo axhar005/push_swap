@@ -6,7 +6,7 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/04/27 21:44:25 by oboucher         ###   ########.fr        #
+#    Updated: 2023/04/27 22:20:14 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,12 @@ $(OBJDIR)		:
 
 run				:		all
 	@./${NAME}
+
+update:
+	git submodule update --remote --recursive
+
+init:
+	git submodule update --init --recursive
 
 clean			:
 	@$(RM) $(OBJ)
