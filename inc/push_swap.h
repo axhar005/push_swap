@@ -2,21 +2,23 @@
 # define PUSH_SWAP_H
 
 //include
-#include "libft/inc/libft.h"
+# include "libft/inc/libft.h"
+# include <stdbool.h>
+
 //struct
 
-typedef struct s_dlist
+typedef struct s_dlst
 {
 	int				content;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}					t_dlist;
+	struct s_dlst	*next;
+	struct s_dlst	*prev;
+}					t_dlst;
 
-typedef struct s_data
+typedef struct s_pile
 {
-	t_dlist *a;
-	t_dlist *b;
-} 					t_data;
+	t_dlst			*a;
+	t_dlst			*b;
+}					t_pile;
 
 //prototype
 
