@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist.c                                            :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:25:24 by oboucher          #+#    #+#             */
-/*   Updated: 2023/05/04 14:40:49 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:00:07 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/// @brief swap two node in the same pile
 void 	ft_push_node(t_dlst **lst)
 {
 	t_dlst *head;
@@ -27,7 +28,10 @@ void 	ft_push_node(t_dlst **lst)
 	*lst = head;
 }
 
-void	ft_sa(t_dlst **a, bool print)
+/// @brief swap the 2 first node in a pile
+/// @param a is the list
+/// @param print bool for print sa
+void	sa(t_dlst **a, bool print)
 {
 	t_dlst *head;
 
@@ -35,10 +39,13 @@ void	ft_sa(t_dlst **a, bool print)
 	if (head->next != head && head->next->content != head)
 		ft_push_node(*a);
 	else
-		ft_ra();
+		ra(*a, false);
 }
 
-void	ft_sb(t_dlst **b, bool print)
+/// @brief swap the 2 first node in b pile
+/// @param b is the list
+/// @param print bool for print sb
+void	sb(t_dlst **b, bool print)
 {
 	t_dlst *head;
 
@@ -46,20 +53,17 @@ void	ft_sb(t_dlst **b, bool print)
 	if (head->next != head && head->next->content != head)
 		ft_push_node(*b);
 	else
-		ft_ra(*b);
+		ra(*b, false);
 }
 
-void	ft_ss(t_dlst **a, t_dlst *b, bool print)
+/// @brief swap the 2 first node in a pile and b pile in same time 
+/// @param a is the list a
+/// @param b is the list b
+/// @param print bool for print ss
+void	ss(t_dlst **a, t_dlst *b, bool print)
 {
-	ft_sa(a, false);
-	ft_sb(b, false);
+	sa(a, false);
+	sb(b, false);
 	if (print)
 		ft_putendl_fd("ss", 1);
-}
-
-void	ft_pa(t_dlst **a, t_dlst *b, bool print)
-{
-	if (b != NULL)
-	{
-	}
 }
