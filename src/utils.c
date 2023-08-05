@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 18:50:15 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 22:21:41 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:25:57 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,18 @@ void index_dlst(int ac, char **av, t_pile *pile)
         i++;
     }
     ft_sfree(nbr_lst);
+}
+
+bool    is_list_sort(t_dlst **lst)
+{
+    t_dlst *head;
+
+    head = *lst;
+    while (head->next != (*lst))
+    {
+        if (head->index > head->next->index)
+            return (false);
+        head = head->next;
+    }
+    return (true);
 }

@@ -50,6 +50,7 @@ void				sb(t_dlst **b, int count, bool print);
 void				ss(t_pile pile, bool print);
 void				index_dlst(int ac, char **av, t_pile *pile);
 int					*av_int_array(int ac, char **av);
+bool				is_list_sort(t_dlst **lst);
 
 //dlst
 
