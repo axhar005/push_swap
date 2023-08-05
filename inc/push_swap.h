@@ -57,4 +57,9 @@ void				ft_dlst_add(t_dlst **lst, int content);
 t_dlst				*ft_dlst_new(int content);
 t_pile				*set_pile(int ac, char **av);
 
+//pars
+
+int					find_filter(char *str, char *filter);
+void				check_double(int ac, char **av);
+
 #endif
