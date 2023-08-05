@@ -6,72 +6,90 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:21 by oboucher          #+#    #+#             */
-/*   Updated: 2023/05/11 12:02:31 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/04 23:08:03 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/push_swap.h"
+#include "../inc/push_swap.h"
+
+void	sort_two_a(t_pile *pile)
+{
+	if (pile->a->content > pile->a->next->content)
+		sa(&pile->a, pile->count_a, true);
+}
+
+void	sort_two_b(t_pile *pile)
+{
+	if (pile->b->content < pile->b->next->content)
+		sa(&pile->b, pile->count_b, true);
+}
 
 void	sort_three_a(t_pile *pile)
 {
 	int	first;
-	int	middle;
+	int	mid;
 	int	last;
 
-	first = pile->a->index;
-	middle = pile->a->next->index;
-	last = pile->a->prev->index;
-	if (first < middle && middle > last && first > last)
+	first = pile->a->content;
+	mid = pile->a->next->content;
+	last = pile->a->prev->content;
+	if (first > last && first > mid)
 	{
-		ra(pile->a, true);
+		ra(&pile->a, true);
 		sort_three_a(pile);
 	}
-	if (first > middle && middle < first && first < last)
+	if (first < mid && mid > last)
 	{
-		rra(pile->a, true);
+		rra(&pile->a, true);
 		sort_three_a(pile);
 	}
-	if (first > middle && middle < last && first < last)
-	{
-		sa(pile->a, true);
-		sort_three_a(pile);
-	}
+	if (first > mid && first < last)
+		sa(&pile->a, pile->count_a, true);
 }
 
-void	sort_four(t_pile *pile)
+void	sort_three_b(t_pile *pile)
 {
-	t_dlst	*head;
+	int	first;
+	int	mid;
+	int	last;
 
-	head = pile->a;
-	if (head->prev->index == 1)
-		rra(pile->a, true);
-	else
-		ra(pile->a, true);
-	if (head->index == 1)
+	first = pile->b->content;
+	mid = pile->b->next->content;
+	last = pile->b->prev->content;
+	if (first < mid && first > last)
 	{
-		pb(pile);
-		sort_three_a(pile);
-		pa(pile);
-		return ;
+		ra(&pile->b, true);
+		sort_three_b(pile);
 	}
-	sort_four(pile);
+	if (mid < first && mid < last)
+	{
+		rra(&pile->b, true);
+		sort_three_b(pile);
+	}
+	if (mid > first && mid > last)
+		sb(&pile->b, pile->count_b, true);
 }
 
-void	sort_five(t_pile *pile)
+void	all_small_sort(t_pile *pile)
 {
-    t_dlst	*head;
-
-	head = pile->a;
-	if (head->prev->index == 1 || head->prev->prev->index == 1)
-		rra(pile->a, true);
-	else
-		ra(pile->a, true);
-	if (head->index == 1)
-	{
-		pb(pile);
-		sort_four(pile);
-		pa(pile);
-		return ;
-	}
-	sort_five(pile);
+	// if (piles->total > 3)
+	// {
+	// 	while (piles->a_count > 3)
+	// 	{
+	// 		if (piles->a->index <= piles->total - 3)
+	// 			pb(piles, 1);
+	// 		else
+	// 			ra(&piles->a, 1);
+	// 	}
+	// }	
+	if (pile->count_b == 2)
+		sort_two_b(pile);
+	else if (pile->count_b == 3)
+		sort_three_b(pile);
+	if (pile->count_a == 2)
+		sort_two_a(pile);
+	else if (pile->count_a == 3)
+		sort_three_a(pile);
+	while (pile->count_b > 0)
+		pa(pile, true);
 }

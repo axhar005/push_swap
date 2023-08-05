@@ -6,13 +6,13 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/05/02 20:55:26 by oboucher         ###   ########.fr        #
+#    Updated: 2023/08/04 22:13:55 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--- LIBRARY NAME ---#
 NAME = push_swap
-LDIR = libft/
+LDIR = libft_/
 LIBFT = libft.a
 
 #--- COMMAND VARIABLES ---#
@@ -36,7 +36,7 @@ INCDIR = inc
 #--- SOURCE ---#
 SRCDIR = src
 
-SRC = 	push_swap.c
+SRC = 	push_swap.c pp.c rr.c rrr.c s.c small_sort.c string.c utils.c dlst.c
 
 VPATH	=	${SRCDIR}
 
@@ -50,7 +50,7 @@ OBJ = $(addprefix ${OBJDIR}/, ${SRC:.c=.o})
 ${OBJDIR}/%.o : %.c
 	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
 	
-all				: 	  init update libft $(NAME)
+all				: 	  libft $(NAME)
 	
 ${NAME}		:		$(OBJDIR) $(OBJ)
 	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJ} $(LDIR)$(LIBFT)
@@ -64,12 +64,6 @@ run				:		all
 
 libft :
 	@$(MAKE) -C $(LDIR)
-
-update:
-	@git submodule update --remote --recursive
-
-init:
-	@git submodule update --init --recursive
 
 clean			:
 	@$(RM) $(OBJ)
