@@ -12,6 +12,7 @@ typedef struct s_dlst
 {
 	int				content;
 	int				index;
+	int				test;
 	struct s_dlst	*next;
 	struct s_dlst	*prev;
 }					t_dlst;
@@ -48,15 +49,20 @@ void				rrr(t_pile *pile, bool print);
 void				sa(t_dlst **a, int count, bool print);
 void				sb(t_dlst **b, int count, bool print);
 void				ss(t_pile pile, bool print);
-void				index_dlst(int ac, char **av, t_pile *pile);
+void				index_dlst(int ac, char **av, t_dlst **lst);
 int					*av_int_array(int ac, char **av);
-bool				is_list_sort(t_dlst **lst);
+void				sort_two_a(t_pile *pile);
+void				all_small_sort(t_pile *pile);
+void				radix_sort(t_pile *pile);
 
 //dlst
 
 void				ft_dlst_add(t_dlst **lst, int content);
 t_dlst				*ft_dlst_new(int content);
 t_pile				*set_pile(int ac, char **av);
+void				create_dlst(int ac, t_dlst **lst);
+void				print_list(t_dlst *head);
+bool				is_list_sort(t_dlst **lst);
 
 //pars
 

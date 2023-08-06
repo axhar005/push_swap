@@ -6,7 +6,7 @@
 #    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/08/04 23:20:04 by oboucher         ###   ########.fr        #
+#    Updated: 2023/08/06 17:53:25 by oboucher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ INCDIR = inc
 #--- SOURCE ---#
 SRCDIR = src
 
-SRC = 	push_swap.c pp.c rr.c rrr.c s.c small_sort.c string.c utils.c dlst.c pars.c
+SRC = 	push_swap.c pp.c rr.c rrr.c s.c small_sort.c string.c utils.c dlst.c pars.c radix_sort.c
 
 VPATH	=	${SRCDIR}
 
@@ -74,6 +74,12 @@ fclean			: 		clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LDIR) fclean
 	@echo "${GREEN}$(NAME) object files and executable successfully removed 🗑.${RESET}"
+
+visudown:
+	git clone https://github.com/o-reo/push_swap_visualizer.git && cd push_swap_visualizer && mkdir build && cd build && cmake .. && make
+
+visu:
+	./push_swap_visualizer/build/bin/visualizer
 
 re				: 		fclean all
 

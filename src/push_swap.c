@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:34 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/05 10:27:33 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:49:20 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,20 @@ int main(int ac, char **av)
     if (ac > 2)
     {
         pars(ac, av);
-		index_dlst(ac, av, &pile);
-		pile.total = ac;
-		pile.count_a = ac;
-
-		// if (is_list_sort(&pile.a))
-		// 	ft_printf("trier");
-		// if (!is_list_sort(&pile.a))
-		// 	ft_printf("pas trier");
+		create_dlst(ac, &pile.a);
+		index_dlst(ac, av, &pile.a);
+		pile.total = ac - 1;
+		pile.count_a = ac - 1;
+		print_list(pile.a);
+		if(!is_list_sort(&pile.a))
+		{
+			if (pile.total == 2)
+				sort_two_a(&pile);
+			else if (pile.total > 2 && pile.total < 7)
+				all_small_sort(&pile);
+			else 
+				radix_sort(&pile);
+		}
     }
     return (0);
 }

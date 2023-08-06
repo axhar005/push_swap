@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:21 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 23:08:03 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:49:25 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,62 +26,65 @@ void	sort_two_b(t_pile *pile)
 
 void	sort_three_a(t_pile *pile)
 {
-	int	first;
-	int	mid;
-	int	last;
+	t_dlst	*first;
+	t_dlst	*mid;
+	t_dlst	*last;
 
-	first = pile->a->content;
-	mid = pile->a->next->content;
-	last = pile->a->prev->content;
-	if (first > last && first > mid)
+	first = pile->a;
+	mid = pile->a->next;
+	last = pile->a->prev;
+	if (first->content > last->content && first->content > mid->content)
 	{
 		ra(&pile->a, true);
 		sort_three_a(pile);
 	}
-	if (first < mid && mid > last)
+	else if (first->content < mid->content && mid->content > last->content)
 	{
 		rra(&pile->a, true);
 		sort_three_a(pile);
 	}
-	if (first > mid && first < last)
+	else if (first->content > mid->content && first->content < last->content)
 		sa(&pile->a, pile->count_a, true);
 }
 
 void	sort_three_b(t_pile *pile)
 {
-	int	first;
-	int	mid;
-	int	last;
+	t_dlst	*first;
+	t_dlst	*mid;
+	t_dlst	*last;
 
-	first = pile->b->content;
-	mid = pile->b->next->content;
-	last = pile->b->prev->content;
-	if (first < mid && first > last)
+	first = pile->b;
+	mid = pile->b->next;
+	last = pile->b->prev;
+	if (first->content < mid->content && first->content < last->content)
 	{
 		ra(&pile->b, true);
 		sort_three_b(pile);
 	}
-	if (mid < first && mid < last)
+	else if (mid->content < first->content && mid->content < last->content)
 	{
 		rra(&pile->b, true);
 		sort_three_b(pile);
 	}
-	if (mid > first && mid > last)
+	else if (mid->content > first->content && mid->content > last->content)
 		sb(&pile->b, pile->count_b, true);
 }
 
 void	all_small_sort(t_pile *pile)
 {
-	// if (piles->total > 3)
-	// {
-	// 	while (piles->a_count > 3)
-	// 	{
-	// 		if (piles->a->index <= piles->total - 3)
-	// 			pb(piles, 1);
-	// 		else
-	// 			ra(&piles->a, 1);
-	// 	}
-	// }	
+	if (pile->total > 3)
+	{
+		while (pile->count_a > 3)
+		{
+			if (pile->a->index <= pile->total - 3)
+				pb(pile, 1);
+			else
+			{
+				ra(&pile->a, 1);
+				// print_list(pile->a);	
+			}
+		}
+	}	
 	if (pile->count_b == 2)
 		sort_two_b(pile);
 	else if (pile->count_b == 3)

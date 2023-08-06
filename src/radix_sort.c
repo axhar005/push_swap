@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:18:39 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 16:39:56 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/06 17:50:43 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    radix_sort(t_pile *pile)
     int j;
 
     i = 0;
-    while (is pile in order)
+    while (!is_list_sort(&pile->a))
     {
         j = 0;
         while (j++ < pile->total)
