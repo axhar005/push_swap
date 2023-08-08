@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:21 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/06 18:49:25 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:10:08 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_two_a(t_pile *pile)
 void	sort_two_b(t_pile *pile)
 {
 	if (pile->b->content < pile->b->next->content)
-		sa(&pile->b, pile->count_b, true);
+		sb(&pile->b, pile->count_b, true);
 }
 
 void	sort_three_a(t_pile *pile)
@@ -58,12 +58,12 @@ void	sort_three_b(t_pile *pile)
 	last = pile->b->prev;
 	if (first->content < mid->content && first->content < last->content)
 	{
-		ra(&pile->b, true);
+		rb(&pile->b, true);
 		sort_three_b(pile);
 	}
 	else if (mid->content < first->content && mid->content < last->content)
 	{
-		rra(&pile->b, true);
+		rrb(&pile->b, true);
 		sort_three_b(pile);
 	}
 	else if (mid->content > first->content && mid->content > last->content)
@@ -77,12 +77,9 @@ void	all_small_sort(t_pile *pile)
 		while (pile->count_a > 3)
 		{
 			if (pile->a->index <= pile->total - 3)
-				pb(pile, 1);
+				pb(pile, true);
 			else
-			{
-				ra(&pile->a, 1);
-				// print_list(pile->a);	
-			}
+				ra(&pile->a, true);
 		}
 	}	
 	if (pile->count_b == 2)

@@ -12,7 +12,6 @@ typedef struct s_dlst
 {
 	int				content;
 	int				index;
-	int				test;
 	struct s_dlst	*next;
 	struct s_dlst	*prev;
 }					t_dlst;
@@ -31,6 +30,7 @@ typedef struct s_pile
 //string
 
 size_t				char_count(char *str, char c);
+size_t				line_count(char **str);
 
 //pushswap
 
@@ -68,5 +68,9 @@ bool				is_list_sort(t_dlst **lst);
 
 int					find_filter(char *str, char *filter);
 void				check_double(int ac, char **av);
+
+//error
+
+void				ft_ps_exit(char *str);
 
 #endif

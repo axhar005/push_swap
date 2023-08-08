@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:17:47 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 23:17:58 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:11:32 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void check_double(int ac, char **av)
 		j = 0;
 		while (j < ac)
 		{
-			if (nbr_lst[i] == nbr_lst[j] && j != i)
-				ft_exit("Error\n>double number");
+			if (nbr_lst[i] == nbr_lst[j] && i != j)
+				ft_ps_exit("Error\n");
 			j++;
 		}
 		i++;

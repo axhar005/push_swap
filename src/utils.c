@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 18:50:15 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/06 18:33:55 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:11:17 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void print_list(t_dlst *head)
 {
     t_dlst *temp = head;
 
-    ft_printf("index : %d | content : %d | test : %d\n", temp->index, temp->content, temp->test);
+    ft_printf("index : %d | content : %d\n", temp->index, temp->content);
     ft_printf("Prev : %p | Mine : %p | Next : %p\n\n", temp->prev, temp, temp->next);
     temp = temp->next;
     while(temp != head)
@@ -68,19 +68,19 @@ void index_dlst(int ac, char **av, t_dlst **lst)
     nbr_lst = av_int_array(ac, av);
     head = (*lst);
     if (!nbr_lst)
-        ft_exit("Error\n>index impossible");
+        ft_ps_exit("Error");
     while (i < ac - 1)
     {
         j = 0;
         index = ac - 1;
         while (j < ac)
         {
-            if (nbr_lst[i] < nbr_lst[j] && j != i)
+            if (nbr_lst[i] < nbr_lst[j])
+            {
                 index--;
+            }
             j++;
         }
-		if (i == 0)
-			head->test = 88;
         head->content = nbr_lst[i];
         head->index = index;
         head = head->next;
