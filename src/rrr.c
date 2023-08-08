@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:24:33 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 15:07:53 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:47:16 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 /// @brief reverse rotate a pile
 /// @param a is the a list
 /// @param print bool for print rra
-void rra(t_dlst **a, bool print)
+void	rra(t_dlst **a, bool print)
 {
-    (*a) = (*a)->prev;
-    if (print)
-        ft_putendl_fd("rra", 1);
+	(*a) = (*a)->prev;
+	if (print)
+		ft_putendl_fd("rra", 1);
 }
 
-void rrb(t_dlst **b, bool print)
+void	rrb(t_dlst **b, bool print)
 {
-    (*b) = (*b)->prev;
-    if (print)
-        ft_putendl_fd("rrb", 1);
+	(*b) = (*b)->prev;
+	if (print)
+		ft_putendl_fd("rrb", 1);
 }
 
-void rrr(t_pile *pile, bool print)
+void	rrr(t_pile *pile, bool print)
 {
-    rra(&pile->a, false);
-    rrb(&pile->b, false);
-    if (print)
-        ft_putendl_fd("rrr", 1);
+	rra(&pile->a, false);
+	rrb(&pile->b, false);
+	if (print)
+		ft_putendl_fd("rrr", 1);
 }

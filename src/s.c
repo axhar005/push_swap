@@ -6,17 +6,17 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:25:24 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 18:13:39 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:47:29 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
 /// @brief swap two node in the same pile
-void 	swap_node(t_dlst **lst)
+void	swap_node(t_dlst **lst)
 {
-	t_dlst *head;
-	t_dlst *tmp;
+	t_dlst	*head;
+	t_dlst	*tmp;
 
 	tmp = *lst;
 	head = (*lst)->next;
@@ -55,7 +55,7 @@ void	sb(t_dlst **b, int count, bool print)
 		ft_putendl_fd("sb", 1);
 }
 
-/// @brief swap the 2 first node in a pile and b pile in same time 
+/// @brief swap the 2 first node in a pile and b pile in same time
 /// @param a is the list a
 /// @param b is the list b
 /// @param print bool for print ss

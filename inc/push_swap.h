@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/08 17:50:03 by oboucher          #+#    #+#             */
+/*   Updated: 2023/08/08 17:50:06 by oboucher         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -63,6 +75,7 @@ t_pile				*set_pile(int ac, char **av);
 void				create_dlst(int ac, t_dlst **lst);
 void				print_list(t_dlst *head);
 bool				is_list_sort(t_dlst **lst);
+void				free_dlst(int ac, t_dlst **lst);
 
 //pars
 

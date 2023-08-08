@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:00:44 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/06 15:15:42 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:44:19 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_dlst_add(t_dlst **lst, int content)
 {
 	t_dlst	*head;
 	t_dlst	*new;
-    
+
 	new = ft_dlst_new(content);
 	if (!new || !lst)
 	{

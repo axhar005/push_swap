@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:21 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 16:10:08 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:47:44 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	all_small_sort(t_pile *pile)
 			else
 				ra(&pile->a, true);
 		}
-	}	
+	}
 	if (pile->count_b == 2)
 		sort_two_b(pile);
 	else if (pile->count_b == 3)

@@ -6,13 +6,13 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:30:34 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/04 14:56:52 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:46:20 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void std_push(t_dlst **a, t_dlst **b)
+void	std_push(t_dlst **a, t_dlst **b)
 {
 	t_dlst	*head_a;
 	t_dlst	*head_b;
@@ -29,11 +29,11 @@ void std_push(t_dlst **a, t_dlst **b)
 	(*b) = head_b;
 }
 
-void empty_push(t_dlst **a, t_dlst **b)
+void	empty_push(t_dlst **a, t_dlst **b)
 {
-	t_dlst *head_a;
-	t_dlst *head_b;
-	
+	t_dlst	*head_a;
+	t_dlst	*head_b;
+
 	head_a = (*a)->next;
 	head_a->prev = (*a)->prev;
 	head_a->prev->next = head_a;
@@ -44,10 +44,10 @@ void empty_push(t_dlst **a, t_dlst **b)
 	(*b) = head_b;
 }
 
-void last_push(t_dlst **a, t_dlst **b)
+void	last_push(t_dlst **a, t_dlst **b)
 {
-	t_dlst *head_b;
-	
+	t_dlst	*head_b;
+
 	head_b = (*a);
 	head_b->next = (*b);
 	head_b->prev = (*b)->prev;
@@ -57,11 +57,11 @@ void last_push(t_dlst **a, t_dlst **b)
 	(*b) = head_b;
 }
 
-void pa(t_pile *pile, bool print)
+void	pa(t_pile *pile, bool print)
 {
 	if (!pile->b)
 		return ;
-	if	(pile->count_a == 0)
+	if (pile->count_a == 0)
 		empty_push(&pile->b, &pile->a);
 	else if (pile->count_b == 1)
 		last_push(&pile->b, &pile->a);
@@ -73,11 +73,11 @@ void pa(t_pile *pile, bool print)
 		ft_putendl_fd("pa", 1);
 }
 
-void pb(t_pile *pile, bool print)
+void	pb(t_pile *pile, bool print)
 {
 	if (!pile->a)
 		return ;
-	if	(pile->count_b == 0)
+	if (pile->count_b == 0)
 		empty_push(&pile->a, &pile->b);
 	else if (pile->count_a == 1)
 		last_push(&pile->a, &pile->b);

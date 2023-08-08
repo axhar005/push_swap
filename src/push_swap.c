@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:34 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 16:11:00 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/08 17:46:38 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	pars(int ac, char **av)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(av[i])
+	while (av[i])
 	{
+		if ((int)ft_atoli(av[i]) > INT_MAX && (int)ft_atoli(av[i]) < INT_MAX)
+			ft_ps_exit("Error");
 		if (find_filter(av[1], "-0123456789"))
 			ft_ps_exit("Error");
 		if (char_count(av[i], '-') > 1)
@@ -30,29 +32,29 @@ void	pars(int ac, char **av)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_pile pile;
-    
-    if (ac > 2)
-    {
-		 if (ac > 501)
-		 	ft_ps_exit("Error");
-        pars(ac, av);
+	t_pile	pile;
+
+	if (ac > 2)
+	{
+		if (ac > 501)
+			ft_ps_exit("Error");
+		pars(ac, av);
 		create_dlst(ac, &pile.a);
 		index_dlst(ac, av, &pile.a);
 		pile.total = ac - 1;
 		pile.count_a = ac - 1;
-		// print_list(pile.a);
-		if(!is_list_sort(&pile.a))
+		if (!is_list_sort(&pile.a))
 		{
 			if (pile.total == 2)
 				sort_two_a(&pile);
 			else if (pile.total > 2 && pile.total < 6)
 				all_small_sort(&pile);
-			else 
+			else
 				radix_sort(&pile);
 		}
-    }
-    return (0);
+	}
+	free_dlst(ac, &pile.a);
+	return (0);
 }

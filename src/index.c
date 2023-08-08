@@ -1,59 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.c                                             :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 23:17:47 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 17:46:06 by oboucher         ###   ########.fr       */
+/*   Created: 2023/08/08 17:27:47 by oboucher          #+#    #+#             */
+/*   Updated: 2023/08/08 17:45:38 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	find_filter(char *str, char *filter)
+void	norm1(int ac, int *nbr_lst, t_dlst **lst)
 {
-	size_t	i;
-	size_t	j;
+	t_dlst	*head;
+	int		index;
+	int		i;
+	int		j;
 
 	i = 0;
-	if (!str || !filter)
-		return (-1);
-	while (str[i])
+	head = *lst;
+	while (i < ac - 1)
 	{
 		j = 0;
-		while (filter[j])
-		{
-			if (str[i] == filter[j])
-				break ;
-			j++;
-		}
-		if (j == ft_strlen(filter))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	check_double(int ac, char **av)
-{
-	int	i;
-	int	j;
-	int	*nbr_lst;
-
-	i = 0;
-	nbr_lst = av_int_array(ac, av);
-	while (i < ac)
-	{
-		j = 0;
+		index = ac - 1;
 		while (j < ac)
 		{
-			if (nbr_lst[i] == nbr_lst[j] && i != j)
-				ft_ps_exit("Error");
+			if (nbr_lst[i] < nbr_lst[j])
+				index--;
 			j++;
 		}
+		head->content = nbr_lst[i];
+		head->index = index;
+		head = head->next;
 		i++;
 	}
+}
+
+void	index_dlst(int ac, char **av, t_dlst **lst)
+{
+	t_dlst	*head;
+	int		*nbr_lst;
+
+	nbr_lst = av_int_array(ac, av);
+	head = (*lst);
+	if (!nbr_lst)
+		ft_ps_exit("Error");
+	norm1(ac, nbr_lst, lst);
 	ft_sfree(nbr_lst);
 }
