@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 18:50:15 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 17:49:17 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:17:22 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	free_dlst(int ac, t_dlst **lst)
 	{
 		temp = head;
 		head = head->next;
-		free(temp);
+		if (temp)
+			free(temp);
 		i++;
 	}
 }
