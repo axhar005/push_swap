@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 18:50:15 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/10 10:17:22 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:10:16 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*av_int_array(int ac, char **av)
 	int	i;
 
 	i = 1;
-	nbr_lst = ft_calloc(ac, sizeof(int));
+	nbr_lst = ft_calloc(ac - 1, sizeof(int));
 	if (!nbr_lst)
 		return (NULL);
 	while (av[i])
@@ -53,6 +53,8 @@ void	free_dlst(int ac, t_dlst **lst)
 	t_dlst	*head;
 	t_dlst	*temp;
 
+	if (!lst)
+		return ;
 	head = *lst;
 	i = 0;
 	while (i < ac - 1)

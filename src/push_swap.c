@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:47:34 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 17:46:38 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 12:55:51 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ void	pars(int ac, char **av)
 	i = 1;
 	while (av[i])
 	{
-		if ((int)ft_atoli(av[i]) > INT_MAX && (int)ft_atoli(av[i]) < INT_MAX)
+		if (ft_atoli(av[i]) > INT_MAX || ft_atoli(av[i]) < INT_MIN)
 			ft_ps_exit("Error");
-		if (find_filter(av[1], "-0123456789"))
+		if (find_filter(av[i], "-0123456789"))
 			ft_ps_exit("Error");
 		if (char_count(av[i], '-') > 1)
 			ft_ps_exit("Error");
 		if (char_count(av[i], '-') == 1 && av[i][0] != '-')
 			ft_ps_exit("Error");
-		check_double(ac, av);
+		if (ac > 2)
+			check_double(ac, av);
 		i++;
 	}
 }
@@ -36,7 +37,9 @@ int	main(int ac, char **av)
 {
 	t_pile	pile;
 
-	if (ac > 2)
+	if (ac == 2)
+		pars(ac, av);
+	else if (ac > 2)
 	{
 		if (ac > 501)
 			ft_ps_exit("Error");
@@ -54,7 +57,7 @@ int	main(int ac, char **av)
 			else
 				radix_sort(&pile);
 		}
+		free_dlst(ac, &pile.a);
 	}
-	free_dlst(ac, &pile.a);
 	return (0);
 }

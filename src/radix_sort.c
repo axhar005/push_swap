@@ -6,7 +6,7 @@
 /*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:18:39 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/08 17:46:50 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/08/13 12:52:45 by oboucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	radix_sort(t_pile *pile)
 		j = 0;
 		while (j++ < pile->total)
 		{
-			if (((pile->a->content >> i) & 1) == 1)
+			if (((pile->a->index >> i) & 1) == 1)
 				ra(&pile->a, true);
 			else
 				pb(pile, true);
