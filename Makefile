@@ -50,7 +50,7 @@ OBJ = $(addprefix ${OBJDIR}/, ${SRC:.c=.o})
 ${OBJDIR}/%.o : %.c
 	@${CC} ${CFLAGS} -I${INCDIR} -I. -c $< -o $@
 	
-all				: 	  libft $(NAME)
+all				: 	  libft $(NAME) visu_download_install
 	
 ${NAME}		:		$(OBJDIR) $(OBJ)
 	@${CC} ${CFLAGS} -I${INCDIR} -o ${NAME} ${OBJ} $(LDIR)$(LIBFT)
@@ -72,6 +72,7 @@ clean			:
 	
 fclean			: 		clean	
 	@$(RM) $(NAME)
+	@$(RM)r push_swap_visualizer/
 	@$(MAKE) -C $(LDIR) fclean
 	@echo "${GREEN}$(NAME) object files and executable successfully removed 🗑.${RESET}"
 
