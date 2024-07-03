@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+         #
+#    By: olivierboucher <olivierboucher@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 12:34:33 by oboucher          #+#    #+#              #
-#    Updated: 2023/08/13 12:42:42 by oboucher         ###   ########.fr        #
+#    Updated: 2023/10/28 21:06:44 by olivierbouc      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT = libft.a
 
 #--- COMMAND VARIABLES ---#
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 RM = rm -f
 AR = ar rcs
 MK = mkdir -p
@@ -75,8 +75,14 @@ fclean			: 		clean
 	@$(MAKE) -C $(LDIR) fclean
 	@echo "${GREEN}$(NAME) object files and executable successfully removed 🗑.${RESET}"
 
-visudown:
+visu_download_install:
 	git clone https://github.com/o-reo/push_swap_visualizer.git && cd push_swap_visualizer && mkdir build && cd build && cmake .. && make
+
+visu_update:
+	cd push_swap_visualizer/build && make
+
+visu_download:
+	git clone https://github.com/o-reo/push_swap_visualizer.git
 
 visu:
 	./push_swap_visualizer/build/bin/visualizer

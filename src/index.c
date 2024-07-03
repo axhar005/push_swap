@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboucher <oboucher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivierboucher <olivierboucher@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 17:27:47 by oboucher          #+#    #+#             */
-/*   Updated: 2023/08/10 14:18:23 by oboucher         ###   ########.fr       */
+/*   Updated: 2023/10/28 21:00:32 by olivierbouc      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	norm1(int ac, int *nbr_lst, t_dlst **lst)
 	{
 		j = 0;
 		index = ac - 1;
-		while (j < ac)
+		while (j < ac - 1)
 		{
 			if (nbr_lst[i] < nbr_lst[j])
 				index--;
@@ -40,11 +40,11 @@ void	norm1(int ac, int *nbr_lst, t_dlst **lst)
 
 void	index_dlst(int ac, char **av, t_dlst **lst)
 {
-	t_dlst	*head;
+	// t_dlst	*head;
 	int		*nbr_lst;
 
 	nbr_lst = av_int_array(ac, av);
-	head = (*lst);
+	// head = (*lst);
 	if (!nbr_lst)
 		ft_ps_exit("Error");
 	norm1(ac, nbr_lst, lst);
